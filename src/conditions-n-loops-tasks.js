@@ -85,6 +85,9 @@ function canQueenCaptureKing(queen, king) {
  * Determines whether a triangle is isosceles based on its side lengths.
  * In this task, the use of methods of the String and Array classes is not allowed.
  *
+ * Определяет, является ли треугольник равнобедренным, исходя из длины его сторон.
+ * В этой задаче использование методов классов String и Array запрещено.
+ *
  * @param {number} a - The length of the first side.
  * @param {number} b - The length of the second side.
  * @param {number} c - The length of the third side.
@@ -99,13 +102,26 @@ function canQueenCaptureKing(queen, king) {
  *  2, 2, 5   => false
  *  3, 0, 3   => false
  */
-function isIsoscelesTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isIsoscelesTriangle(a, b, c) {
+  if (a === b && c > 0 && c <= a + b) {
+    return true;
+  }
+  if (b === c && a > 0 && a <= c + b) {
+    return true;
+  }
+  if (a === c && b > 0 && b <= a + c) {
+    return true;
+  }
+
+  return false;
 }
 
 /**
  * Converts a number to Roman numerals. The number will be between 1 and 39.
  * In this task, the use of methods of the String and Array classes is not allowed.
+ *
+ * Преобразует число в римские цифры. Число будет находиться в диапазоне от 1 до 39.
+ * В этой задаче использование методов классов String и Array запрещено.
  *
  * @param {number} num - The number to convert.
  * @return {string} The Roman numeral representation of the number.
@@ -117,8 +133,19 @@ function isIsoscelesTriangle(/* a, b, c */) {
  *  10  => X
  *  26  => XXVI
  */
-function convertToRomanNumerals(/* num */) {
-  throw new Error('Not implemented');
+function convertToRomanNumerals(num) {
+  const romanToNum = { X: 10, IX: 9, V: 5, IV: 4, I: 1 };
+  let number = num;
+  let roman = '';
+
+  Object.keys(romanToNum).forEach((key) => {
+    while (number >= romanToNum[key]) {
+      roman += key;
+      number -= romanToNum[key];
+    }
+  });
+
+  return roman;
 }
 
 /**
