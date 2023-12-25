@@ -13,6 +13,9 @@
  * Determines whether a given number is positive. Zero is considered positive.
  * This function does not use Number or Math class methods.
  *
+ * Определяет, является ли данное число положительным. Положительным считается ноль.
+ * Эта функция не использует методы класса Number или Math.
+ *
  * @param {number} number - The number to check.
  * @return {boolean} True if the number is positive or zero, false otherwise.
  *
@@ -21,12 +24,13 @@
  *  0  => true
  *  -5 => false
  */
-function isPositive(/* number */) {
-  throw new Error('Not implemented');
+function isPositive(number) {
+  return number >= 0;
 }
 
 /**
  * Returns the maximum of three numbers without using Array and Math classes methods.
+ * Возвращает максимум три числа без использования методов Array и Math classes
  *
  * @param {number} a - The first number.
  * @param {number} b - The second number.
@@ -38,13 +42,19 @@ function isPositive(/* number */) {
  *  -5, 0, 5      => 5
  *  -0.1, 0, 0.2  => 0.2
  */
-function getMaxNumber(/* a, b, c */) {
-  throw new Error('Not implemented');
+function getMaxNumber(a, b, c) {
+  if (a > b) {
+    return a > c ? a : c;
+  }
+  return b > c ? b : c;
 }
 
 /**
  * Checks if a queen can capture a king in the next move on an 8x8 chessboard.
  * See more details at https://en.wikipedia.org/wiki/Queen_(chess)
+ *
+ * Проверяет, сможет ли ферзь захватить короля следующим ходом на шахматной доске 8х8.
+ * Смотрите более подробную информацию на странице https://en.wikipedia.org/wiki/Queen_ (шахматы)
  *
  * @typedef {{
  *  x: number,
