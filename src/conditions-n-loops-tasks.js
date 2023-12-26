@@ -241,6 +241,9 @@ function convertNumberToString(numberStr) {
  * Determines whether a string is a palindrome.
  * In this task, the use of methods of the String and Array classes is not allowed.
  *
+ * Определяет, является ли строка палиндромом.
+ * В этой задаче использование методов классов String и Array запрещено.
+ *
  * @param {string} str - The string to check.
  * @return {boolean} True if the string is a palindrome, false otherwise.
  *
@@ -249,8 +252,14 @@ function convertNumberToString(numberStr) {
  *  '0123210'   => true
  *  'qweqwe'    => false
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  let inversionStr = '';
+
+  for (let i = str.length - 1; i >= 0; i -= 1) {
+    inversionStr += str[i];
+  }
+
+  return str === inversionStr;
 }
 
 /**
