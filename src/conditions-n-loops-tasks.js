@@ -134,16 +134,39 @@ function isIsoscelesTriangle(a, b, c) {
  *  26  => XXVI
  */
 function convertToRomanNumerals(num) {
-  const romanToNum = { X: 10, IX: 9, V: 5, IV: 4, I: 1 };
   let number = num;
   let roman = '';
-
-  Object.keys(romanToNum).forEach((key) => {
-    while (number >= romanToNum[key]) {
-      roman += key;
-      number -= romanToNum[key];
+  for (let i = 0; i < 5; i += 1) {
+    let key;
+    let currentNumber;
+    switch (i) {
+      case 0:
+        key = 'X';
+        currentNumber = 10;
+        break;
+      case 1:
+        key = 'IX';
+        currentNumber = 9;
+        break;
+      case 2:
+        key = 'V';
+        currentNumber = 5;
+        break;
+      case 3:
+        key = 'IV';
+        currentNumber = 4;
+        break;
+      default: {
+        key = 'I';
+        currentNumber = 1;
+      }
     }
-  });
+
+    while (number >= currentNumber) {
+      roman += key;
+      number -= currentNumber;
+    }
+  }
 
   return roman;
 }
