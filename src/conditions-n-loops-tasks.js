@@ -266,6 +266,9 @@ function isPalindrome(str) {
  * Finds the first occurrence of a letter in a string.
  * In this task, the use of methods of the String and Array classes is not allowed.
  *
+ * Находит первое вхождение буквы в строку.
+ * В этой задаче использование методов классов String и Array запрещено.
+ *
  * @param {string} str - The string to search.
  * @param {string} letter - The letter to find.
  * @return {number} The index of the first occurrence of the letter, or -1 if not found.
@@ -276,13 +279,21 @@ function isPalindrome(str) {
  *  'qwerty', 'Q'     => -1
  *  'qwerty', 'p'     => -1
  */
-function getIndexOf(/* str, letter */) {
-  throw new Error('Not implemented');
+function getIndexOf(str, letter) {
+  let i = 0;
+  while (str[i] !== letter && i < str.length) {
+    i += 1;
+  }
+
+  return str[i] === letter ? i : -1;
 }
 
 /**
  * Checks if a number contains a specific digit.
  * In this task, the use of methods of the String and Array classes is not allowed.
+ *
+ * Проверяет, содержит ли число определенную цифру.
+ * В этой задаче не допускается использование методов классов String и Array.
  *
  * @param {number} num - The number to check.
  * @param {number} digit - The digit to search for.
@@ -295,8 +306,16 @@ function getIndexOf(/* str, letter */) {
  *  12345, 0    => false
  *  12345, 6    => false
  */
-function isContainNumber(/* num, digit */) {
-  throw new Error('Not implemented');
+function isContainNumber(num, digit) {
+  let isContain;
+  let newNum = num;
+
+  while (isContain !== digit && newNum > 0) {
+    isContain = newNum % 10;
+    newNum = Math.floor(newNum / 10);
+  }
+
+  return isContain === digit;
 }
 
 /**
