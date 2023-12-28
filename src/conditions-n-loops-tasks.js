@@ -323,6 +323,10 @@ function isContainNumber(num, digit) {
  * If such an index does not return -1.
  * In this task, the use of methods of the Array and String classes is not allowed.
  *
+ * Находит индекс элемента в массиве, где сумма элементов слева равна сумме элементов справа.
+ * Если такой индекс не возвращает -1.
+ * В этой задаче использование методов классов Array и String запрещено.
+ *
  * @param {number[]} arr - The array to check.
  * @return {number} The index of the balance point, or -1 if none exists.
  *
@@ -331,8 +335,32 @@ function isContainNumber(num, digit) {
  *  [2, 3, 9, 5] => 2       => 2 + 3 === 5 then balance element is 9 and its index = 2
  *  [1, 2, 3, 4, 5] => -1   => no balance element
  */
-function getBalanceIndex(/* arr */) {
-  throw new Error('Not implemented');
+function getBalanceIndex(arr) {
+  if (arr.length <= 2) {
+    return -1;
+  }
+  let i = 0;
+
+  while (i < arr.length) {
+    let beginSum = 0;
+    let endSum = 0;
+    for (let j = 0; j < arr.length; j += 1) {
+      if (i > j) {
+        beginSum += arr[j];
+      }
+
+      if (i < j) {
+        endSum += arr[j];
+      }
+    }
+    if (beginSum === endSum) {
+      return i;
+    }
+
+    i += 1;
+  }
+
+  return -1;
 }
 
 /**
