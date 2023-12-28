@@ -390,9 +390,11 @@ function getBalanceIndex(arr) {
  */
 function getSpiralMatrix(size) {
   const newArray = [];
+  let count = 0;
   for (let i = 0; i < size; i += 1) {
     for (let j = 0; j < size; j += 1) {
-      newArray[i][j] = i;
+      count += 1;
+      newArray[[i][j]] = count;
     }
   }
   return newArray;
