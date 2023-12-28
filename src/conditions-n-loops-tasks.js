@@ -389,15 +389,41 @@ function getBalanceIndex(arr) {
  *        ]
  */
 function getSpiralMatrix(size) {
-  const newArray = [];
-  let count = 0;
+  const spiralArray = [];
+
   for (let i = 0; i < size; i += 1) {
+    const arr = new Array(size);
     for (let j = 0; j < size; j += 1) {
+      arr[j] = 0;
+    }
+    spiralArray[i] = arr;
+  }
+
+  let count = 0;
+
+  for (let i = 0; i < size / 2; i += 1) {
+    for (let j = i; j < size - i; j += 1) {
       count += 1;
-      newArray[[i][j]] = count;
+      spiralArray[i][j] = count;
+    }
+
+    for (let k = i + 1; k < size - i; k += 1) {
+      count += 1;
+      spiralArray[k][size - 1 - i] = count;
+    }
+
+    for (let j = size - i - 2; j >= i; j -= 1) {
+      count += 1;
+      spiralArray[size - 1 - i][j] = count;
+    }
+
+    for (let k = size - 2 - i; k > i; k -= 1) {
+      count += 1;
+      spiralArray[k][i] = count;
     }
   }
-  return newArray;
+
+  return spiralArray;
 }
 
 /**
