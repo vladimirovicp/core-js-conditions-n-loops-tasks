@@ -368,6 +368,10 @@ function getBalanceIndex(arr) {
  * The direction of filling with numbers is clockwise.
  * Usage of String and Array classes methods is not allowed in this task.
  *
+ * Генерирует спиральную матрицу заданного размера, заполненную числами в порядке возрастания, начиная с единицы.
+ * Направление заполнения числами - по часовой стрелке.
+ * Использование методов классов String и Array в этой задаче запрещено.
+ *
  * @param {number} size - The size of the matrix.
  * @return {number[][]} The spiral matrix.
  *
@@ -384,8 +388,14 @@ function getBalanceIndex(arr) {
  *          [10, 9,  8,  7]
  *        ]
  */
-function getSpiralMatrix(/* size */) {
-  throw new Error('Not implemented');
+function getSpiralMatrix(size) {
+  const newArray = [];
+  for (let i = 0; i < size; i += 1) {
+    for (let j = 0; j < size; j += 1) {
+      newArray[i][j] = i;
+    }
+  }
+  return newArray;
 }
 
 /**
