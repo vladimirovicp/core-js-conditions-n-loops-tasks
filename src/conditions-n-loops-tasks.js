@@ -447,14 +447,7 @@ function getSpiralMatrix(size) {
  */
 function rotateMatrix(matrix) {
   const n = matrix.length;
-  const mainMatrix = [];
-
-  for (let i = 0; i < n; i += 1) {
-    mainMatrix[i] = [];
-    for (let j = 0; j < n; j += 1) {
-      mainMatrix[i][j] = matrix[i][j];
-    }
-  }
+  const mainMatrix = matrix;
 
   for (let i = 0; i < Math.floor(n / 2); i += 1) {
     for (let j = 0; j < n - 2 * i - 1; j += 1) {
