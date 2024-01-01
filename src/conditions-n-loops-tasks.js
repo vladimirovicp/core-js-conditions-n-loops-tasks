@@ -476,6 +476,11 @@ function rotateMatrix(matrix) {
  * Take into account that the array can be very large. Consider how you can optimize your solution.
  * In this task, the use of methods of the Array and String classes is not allowed.
  *
+ * Сортирует массив чисел в порядке возрастания на месте.
+ * Используйте любой алгоритм сортировки по вашему выбору.
+ * Примите во внимание, что массив может быть очень большим. Подумайте, как вы можете оптимизировать свое решение.
+ * В этой задаче использование методов классов Array и String запрещено.
+ *
  * @param {number[]} arr - The array to sort.
  * @return {number[]} The sorted array.
  *
@@ -484,8 +489,35 @@ function rotateMatrix(matrix) {
  *  [2, 9, 5, 9]    => [2, 5, 9, 9]
  *  [-2, 9, 5, -3]  => [-3, -2, 5, 9]
  */
-function sortByAsc(/* arr */) {
-  throw new Error('Not implemented');
+function sortByAsc(arr) {
+  if (arr.length <= 1) {
+    return arr;
+  }
+  const current = arr[0];
+  const result = arr;
+  let left = [];
+  let right = [];
+  let leftIndex = 0;
+  let rightIndex = 0;
+  for (let i = 1; i <= arr.length - 1; i += 1) {
+    if (arr[i] < current) {
+      left[leftIndex] = arr[i];
+      leftIndex += 1;
+    } else {
+      right[rightIndex] = arr[i];
+      rightIndex += 1;
+    }
+  }
+  left = sortByAsc(left);
+  right = sortByAsc(right);
+  for (let i = 0; i < leftIndex; i += 1) {
+    result[i] = left[i];
+  }
+  result[leftIndex] = current;
+  for (let i = 0; i < rightIndex; i += 1) {
+    result[leftIndex + 1 + i] = right[i];
+  }
+  return result;
 }
 
 /**
