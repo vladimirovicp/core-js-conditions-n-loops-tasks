@@ -431,6 +431,10 @@ function getSpiralMatrix(size) {
  * Take into account that the matrix size can be very large. Consider how you can optimize your solution.
  * Usage of String and Array class methods is not allowed in this task.
  *
+ * Поворачивает матрицу на месте на 90 градусов по часовой стрелке.
+ * Учтите, что размер матрицы может быть очень большим. Подумайте, как можно оптимизировать свое решение.
+ * В этой задаче не допускается использование методов классов String и Array.
+ *
  * @param {number[][]} matrix - The matrix to rotate.
  * @return {number[][]} The rotated matrix.
  *
@@ -442,24 +446,35 @@ function getSpiralMatrix(size) {
  *  ]                 ]
  */
 function rotateMatrix(matrix) {
-  const rotateArray = [];
   const n = matrix.length;
+  const mainMatrix = [];
 
   for (let i = 0; i < n; i += 1) {
-    const arr = [];
+    mainMatrix[i] = [];
     for (let j = 0; j < n; j += 1) {
-      arr[j] = 0;
-    }
-    rotateArray[i] = arr;
-  }
-
-  for (let i = 0; i < n; i += 1) {
-    for (let j = 0; j < n; j += 1) {
-      rotateArray[i][j] = matrix[n - 1 - j][i];
+      mainMatrix[i][j] = matrix[i][j];
     }
   }
 
-  return rotateArray;
+  for (let i = 0; i < Math.floor(n / 2); i += 1) {
+    for (let j = 0; j < n - 2 * i - 1; j += 1) {
+      let t = mainMatrix[i + j][n - 1 - i];
+      const t2 = mainMatrix[i][i + j];
+      mainMatrix[i + j][n - 1 - i] = 0;
+      mainMatrix[i + j][n - 1 - i] = t2;
+      mainMatrix[i][i + j] = t;
+
+      t = mainMatrix[n - 1 - i][n - 1 - i - j];
+      mainMatrix[n - 1 - i][n - 1 - i - j] = mainMatrix[i][i + j];
+      mainMatrix[i][i + j] = t;
+
+      t = mainMatrix[n - 1 - i - j][i];
+      mainMatrix[n - 1 - i - j][i] = mainMatrix[i][i + j];
+      mainMatrix[i][i + j] = t;
+    }
+  }
+
+  return mainMatrix;
 }
 
 /**
