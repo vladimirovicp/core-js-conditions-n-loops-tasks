@@ -537,14 +537,29 @@ function sortByAsc(arr) {
  *  '012345', 3 => '024135' => '043215' => '031425'
  *  'qwerty', 3 => 'qetwry' => 'qtrewy' => 'qrwtey'
  */
-function shuffleChar(/* str, iterations */) {
-  throw new Error('Not implemented');
+function shuffleChar(str, iterations) {
+  let currentStr = str;
+  for (let j = 1; j <= iterations; j += 1) {
+    let even = '';
+    let odd = '';
+    for (let i = 0; i < currentStr.length; i += 1) {
+      if (i % 2 === 0) even += currentStr[i];
+      if (i % 2 === 1) odd += currentStr[i];
+    }
+    currentStr = even + odd;
+    if (currentStr === str) return shuffleChar(currentStr, iterations % j);
+  }
+  return currentStr;
 }
 
 /**
  * Returns the nearest largest integer consisting of the digits of the given positive integer.
  * If there is no such number, it returns the original number.
  * Usage of String class methods is not allowed in this task.
+ *
+ * Возвращает ближайшее наибольшее целое число, состоящее из цифр указанного положительного целого числа.
+ * Если такого числа нет, возвращает исходное число.
+ * Использование методов класса String в этой задаче не допускается.
  *
  * @example:
  * 12345    => 12354
